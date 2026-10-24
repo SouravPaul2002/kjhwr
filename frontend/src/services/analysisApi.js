@@ -3,7 +3,11 @@
  * Connects to the FastAPI backend at /api/analysis.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD
+    ? 'https://kjhwr-backend-ib3o.onrender.com'
+    : 'http://127.0.0.1:8000');
 
 /**
  * Fetch forecast vs actual wind generation analysis.

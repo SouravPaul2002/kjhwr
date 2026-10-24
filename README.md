@@ -2,6 +2,10 @@
 
 A full-stack analytics dashboard for evaluating UK wind generation forecasts against actual generation. Built to support day-ahead electricity procurement decisions by measuring forecast accuracy using historical data from the Elexon BMRS API.
 
+🔗 **Live Dashboard**: [https://frontend-inky-theta-75.vercel.app](https://frontend-inky-theta-75.vercel.app)  
+🚀 **Live Backend API**: [https://kjhwr-backend-ib3o.onrender.com](https://kjhwr-backend-ib3o.onrender.com)  
+📖 **API Docs (Swagger)**: [https://kjhwr-backend-ib3o.onrender.com/docs](https://kjhwr-backend-ib3o.onrender.com/docs)
+
 ## Overview
 
 Wind generation is variable, so inaccurate forecasts can create challenges for electricity procurement and balancing decisions. This project compares published wind generation forecasts with actual generation for January 2026 and calculates key forecast error metrics.
@@ -371,11 +375,11 @@ The frontend must use an API URL reachable from the user's browser. A Docker-int
 
 The frontend uses the following environment variable:
 
-| Variable | Description | Local example |
-|---|---|---|
-| `VITE_API_BASE_URL` | Base URL of the FastAPI backend | `http://127.0.0.1:8000` |
+| Variable | Description | Local default | Production (Render) |
+|---|---|---|---|
+| `VITE_API_BASE_URL` | Base URL of the FastAPI backend | `http://127.0.0.1:8000` | `https://kjhwr-backend-ib3o.onrender.com` |
 
-Vite embeds `VITE_` variables into the frontend during the build. Set the correct backend URL before building the production frontend.
+Vite embeds `VITE_` variables into the frontend during the build. In production builds, the frontend automatically defaults to `https://kjhwr-backend-ib3o.onrender.com` unless overridden.
 
 Do not commit credentials, API secrets, or private environment files to the repository.
 
@@ -408,19 +412,25 @@ Before deployment, verify:
 
 ## Deployment
 
-Deploy the frontend and backend to hosting platforms that support their respective runtimes.
+### Live Backend (Render)
+- **Backend API Base**: `https://kjhwr-backend-ib3o.onrender.com`
+- **Health Check**: [https://kjhwr-backend-ib3o.onrender.com/health](https://kjhwr-backend-ib3o.onrender.com/health)
+- **API Documentation**: [https://kjhwr-backend-ib3o.onrender.com/docs](https://kjhwr-backend-ib3o.onrender.com/docs)
+- **Analysis Endpoint**: [https://kjhwr-backend-ib3o.onrender.com/api/analysis?date_from=2026-01-01&date_to=2026-01-31&cutoff_hour_utc=12](https://kjhwr-backend-ib3o.onrender.com/api/analysis?date_from=2026-01-01&date_to=2026-01-31&cutoff_hour_utc=12)
 
-For a separate frontend and backend deployment:
+### Frontend Deployment (e.g. Vercel, Netlify, Render)
+1. Set the root directory to `frontend/`.
+2. Configure environment variable:
+   - `VITE_API_BASE_URL`: `https://kjhwr-backend-ib3o.onrender.com`
+3. Build command: `npm run build`
+4. Publish / Output directory: `dist`
+5. The FastAPI backend has CORS enabled to accept requests from any deployed frontend origin.
 
-1. Deploy the FastAPI backend.
-2. Confirm that the public backend URL and API endpoints are accessible.
-3. Configure the frontend's `VITE_API_BASE_URL` to use the public backend URL.
-4. Rebuild and deploy the frontend.
-5. Verify the application using its public URL, including the filters, charts, metrics, and records table.
-
-If deploying the frontend and backend separately, configure FastAPI CORS to allow the deployed frontend origin.
-
-**Live dashboard:** Add the deployed application URL here.
+### Live Deployment Links
+- 🌐 **Live Dashboard (Vercel)**: [https://frontend-inky-theta-75.vercel.app](https://frontend-inky-theta-75.vercel.app)
+- ⚙️ **Live Backend API (Render)**: [https://kjhwr-backend-ib3o.onrender.com](https://kjhwr-backend-ib3o.onrender.com)
+- 📑 **Interactive API Docs (Swagger)**: [https://kjhwr-backend-ib3o.onrender.com/docs](https://kjhwr-backend-ib3o.onrender.com/docs)
+- 🩺 **Health Check**: [https://kjhwr-backend-ib3o.onrender.com/health](https://kjhwr-backend-ib3o.onrender.com/health)
 
 ## AI Tool Usage
 

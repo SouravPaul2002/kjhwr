@@ -11,7 +11,7 @@ RUN npm ci || npm install
 COPY . .
 
 # Build argument for backend API URL embedded during build
-ARG VITE_API_BASE_URL=http://localhost:8000
+ARG VITE_API_BASE_URL=https://kjhwr-backend-ib3o.onrender.com
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 # Build production bundle
