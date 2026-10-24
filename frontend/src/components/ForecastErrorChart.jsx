@@ -10,7 +10,7 @@ import {
   ReferenceLine,
 } from 'recharts';
 import { formatUtcDateTime, formatChartAxisTick, formatMw, formatSignedError } from '../utils/formatters';
-import { Activity, ArrowUpRight, ArrowDownRight, Info } from 'lucide-react';
+import { Activity, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 function CustomErrorTooltip({ active, payload, label }) {
   if (!active || !payload || !payload.length) return null;

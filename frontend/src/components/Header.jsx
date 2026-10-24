@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wind, RefreshCw, Activity, ShieldAlert } from 'lucide-react';
+import { Wind, RefreshCw, ShieldAlert } from 'lucide-react';
 
 export default function Header({ onRefresh, isLoading, isError, lastUpdated }) {
   return (

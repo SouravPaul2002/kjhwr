@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Filter, Calendar, Clock, RotateCcw, Info } from 'lucide-react';
 
 export default function AnalysisFilters({
@@ -11,12 +11,6 @@ export default function AnalysisFilters({
   const [cutoffHour, setCutoffHour] = useState(filters.cutoffHourUtc);
   const [validationError, setValidationError] = useState('');
 
-  // Keep local form state in sync when parent filters change (e.g. on external reset)
-  useEffect(() => {
-    setDateFrom(filters.dateFrom);
-    setDateTo(filters.dateTo);
-    setCutoffHour(filters.cutoffHourUtc);
-  }, [filters]);
 
   const handleApply = (e) => {
     e.preventDefault();
@@ -51,10 +45,6 @@ export default function AnalysisFilters({
     });
   };
 
-  const isFormDirty =
-    dateFrom !== filters.dateFrom ||
-    dateTo !== filters.dateTo ||
-    Number(cutoffHour) !== filters.cutoffHourUtc;
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs mb-6">

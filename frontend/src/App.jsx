@@ -72,7 +72,7 @@ export default function App() {
         abortControllerRef.current.abort();
       }
     };
-  }, [loadData]); // run on mount
+  }, [loadData, filters]);
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
@@ -123,6 +123,7 @@ export default function App() {
 
         {/* 2. Analysis Filter Controls */}
         <AnalysisFilters
+          key={`${filters.dateFrom}-${filters.dateTo}-${filters.cutoffHourUtc}`}
           filters={filters}
           onApply={handleApplyFilters}
           isLoading={isLoading}

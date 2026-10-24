@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'recharts';
 import { formatUtcDateTime, formatChartAxisTick, formatMw, formatSignedError } from '../utils/formatters';
-import { Zap, TrendingUp, Info } from 'lucide-react';
+import { Zap, Info } from 'lucide-react';
 
 // Custom Tooltip component
 function CustomForecastActualTooltip({ active, payload, label }) {

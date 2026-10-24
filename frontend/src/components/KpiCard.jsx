@@ -1,6 +1,6 @@
 import React from 'react';
 import { Target, TrendingUp, Compass, CheckCircle2, AlertTriangle } from 'lucide-react';
-import { formatNumber, formatSignedError } from '../utils/formatters';
+import { formatNumber } from '../utils/formatters';
 
 export default function KpiCards({ metrics, expectedPeriods, isLoading }) {
   if (isLoading) {
